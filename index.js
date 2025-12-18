@@ -133,7 +133,7 @@ function loginUser() {
     localStorage.setItem('user', email);
     closeLogin();
     updateAuthUI();
-    showToast(Welcome back, ${email.split('@')[0]}!);
+    showToast(`Welcome back, ${email.split('@')[0]}!`);
     
     // If cart has items, open cart immediately
     if (cart.length > 0) {
@@ -192,7 +192,7 @@ function processCheckout() {
     localStorage.setItem('orders', JSON.stringify(existingOrders));
 
     // Success
-    alert(ORDER PLACED!\n\nID: ${trackingID}\nYou can view this in "My Orders");
+    alert(`ORDER PLACED!\n\nID: ${trackingID}\nYou can view this in "My Orders"`);
     
     // Reset
     cart = [];
@@ -223,7 +223,7 @@ function loadUserOrders() {
     const userOrders = allOrders.filter(o => o.user === currentUser);
 
     if (userOrders.length === 0) {
-        ordersList.innerHTML = <p class="empty-msg">No orders found.</p>;
+        ordersList.innerHTML = '<p class="empty-msg">No orders found.</p>';
         return;
     }
 
