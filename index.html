@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModernShop | Premium Streetwear</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">ModernShop<span style="color:var(--accent)">.</span></div>
+        
+        <div class="nav-actions">
+            <button class="nav-link" onclick="openOrdersModal()">My Orders</button>
+            <button class="nav-link" id="authBtn" onclick="toggleAuth()">Login</button>
+            <div class="cart-icon" onclick="toggleCart()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Summer Collection <span class="highlight">2025</span></h1>
+        <p>Elevate your style with our exclusive premium selection.</p>
+        <button class="hero-btn" onclick="document.getElementById('productsGrid').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">New Arrivals</h2>
+        <div class="products-grid" id="productsGrid">
+            </div>
+    </div>
+
+    <div class="overlay" id="cartOverlay">
+        <div class="modal cart-modal">
+            <div class="modal-header">
+                <h2>Your Cart</h2>
+                <button class="close-btn" onclick="toggleCart()">×</button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <p class="empty-msg">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-footer">
+                <div class="total-row">
+                    <span>Total</span>
+                    <span id="cartTotal">₱0.00</span>
+                </div>
+
+                <div class="checkout-form">
+                    <label>Delivery Address:</label>
+                    <textarea id="deliveryAddress" placeholder="Enter your full address here..."></textarea>
+                    
+                    <label>Payment Mode:</label>
+                    <div class="payment-box">
+                        <input type="radio" checked disabled> Cash on Delivery (COD) Only
+                    </div>
+                </div>
+
+                <button class="checkout-btn" onclick="processCheckout()">Place Order Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="loginOverlay">
+        <div class="modal auth-modal">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="close-btn" onclick="closeLogin()">×</button>
+            </div>
+            <div class="auth-form">
+                <p style="color:var(--text-muted); margin-bottom: 1rem;">Please login to view your orders.</p>
+                <input type="email" id="loginEmail" placeholder="Email Address" class="auth-input">
+                <input type="password" id="loginPass" placeholder="Password" class="auth-input">
+                <button class="checkout-btn" onclick="loginUser()">Login</button>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:1rem; text-align:center;">(Any email works for demo)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="ordersOverlay">
+        <div class="modal track-modal">
+            <div class="modal-header">
+                <h2>My Orders</h2>
+                <button class="close-btn" onclick="closeOrdersModal()">×</button>
+            </div>
+            <div id="ordersList" class="orders-list">
+                </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Notification</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
